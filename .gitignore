@@ -1,0 +1,8 @@
+tictactoe
+a.out
+*.o
+*.obj
+*.exe
+*~
+*.swp
+*.swo
