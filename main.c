@@ -1,5 +1,6 @@
 #include <stdbool.h>
 #include <stdint.h>
+#include <time.h>
 
 #include "minimax.h"
 #include "SDL.h"
@@ -119,10 +120,16 @@ main(int argc, char *argv[])
 		return 1;
 	}
 
+	srand(time(NULL));
+	if (rand() & 1) {
+		int8_t *flat_arr = (int8_t *)arr;
+		flat_arr[minimax(flat_arr)] = -1;
+	}
+
 	render(renderer, arr, size);
 
 	SDL_Event e;
-	bool quit;
+	bool quit = false;
 	while (!quit) {
 		SDL_WaitEvent(&e);
 		switch (e.type) {
